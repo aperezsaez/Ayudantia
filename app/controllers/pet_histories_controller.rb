@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class PetHistoriesController < ApplicationController
-  before_action :set_pet_history, only: [:show, :edit, :update, :destroy]
+  before_action :set_pet_history, only: %i[show edit update destroy]
 
   # GET /pet_histories
   # GET /pet_histories.json
@@ -9,17 +11,17 @@ class PetHistoriesController < ApplicationController
 
   # GET /pet_histories/1
   # GET /pet_histories/1.json
-  def show
-  end
+  def show; end
 
   # GET /pet_histories/new
   def new
     @pet_history = PetHistory.new
+    @pets = Pet.pluck :name, :id
+    @statuses = PetHistory.statuses.keys
   end
 
   # GET /pet_histories/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /pet_histories
   # POST /pet_histories.json
@@ -62,13 +64,14 @@ class PetHistoriesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_pet_history
-      @pet_history = PetHistory.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def pet_history_params
-      params.require(:pet_history).permit(:weight, :height, :description, :status, :pet_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_pet_history
+    @pet_history = PetHistory.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def pet_history_params
+    params.require(:pet_history).permit(:weight, :height, :description, :status, :pet_id)
+  end
 end

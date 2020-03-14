@@ -6,6 +6,26 @@
 </p>
 
 <p>
+  <strong> Peso Promedio: </strong>
+    <p> <%= @pet.avg_peso %> </p>
+</p>
+
+<p>
+  <strong> Altura Promedio: </strong>
+    <p> <%= @pet.avg_altura %> </p>
+</p>
+
+<p>
+  <strong> Altura max: </strong>
+    <p> <%= @pet.altura_max %> </p>
+</p>
+
+<p>
+  <strong> Peso max: </strong>
+    <p> <%= @pet.peso_max %> </p>
+</p>
+
+<p>
   <strong>Race:</strong>
   <%= @pet.race %>
 </p>
@@ -14,6 +34,20 @@
   <strong>Birth date:</strong>
   <%= @pet.birth_date %>
 </p>
+<hr>
+<% @pet.pet_histories.each do |i| %>
+<div>
+  <p> Descripción <%= i.description%> </p>
+  <p> Altura <%= i.height %></p>
+  <p> Peso <%= i.weight %></p>
+  <p> Estado <%= i.status %></p>
+  <p> Fecha de Consulta <%=i.created_at %> </p>
+  <br>
+  <hr>
+<% end %>
+</div>
+
+
 
 <%= link_to 'Edit', edit_pet_path(@pet) %> |
 <%= link_to 'Back', pets_path %>
