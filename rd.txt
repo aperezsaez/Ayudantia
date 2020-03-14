@@ -1,0 +1,9 @@
+ 260  rails g scaffold Pet name race birth_date:date
+ 263  rails g scaffold PetHistory weight:float height:float description status:integer pet:references
+ 264  rails db:migrate
+ 265  git add .
+ 266  git commit -m "scaffolds"
+ 267  git push origin veterinario
+      git branch te muestra las ramas
+      git checkout para moverse entre ramas
+      git merge desde la rama que quieres actualizar llamas a la completa
