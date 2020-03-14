@@ -15,10 +15,12 @@ class PetsController < ApplicationController
   # GET /pets/new
   def new
     @pet = Pet.new
+    @clients = Client.pluck :name, :id
   end
 
   # GET /pets/1/edit
   def edit
+    @clients = Client.pluck :name, :id
   end
 
   # POST /pets
@@ -69,6 +71,6 @@ class PetsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def pet_params
-      params.require(:pet).permit(:name, :race, :birth_date)
+      params.require(:pet).permit(:name, :race, :birth_date, :client_id)
     end
 end
